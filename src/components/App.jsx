@@ -1,11 +1,17 @@
-import Profile from "./Profile";
-import user from '../user.json';
+import {Profile} from "./Profile/Profile";
+import { Statistics } from "./Statistics/Statistics";
+import { FriendList } from "./FriendList/FriendList";
+import user from 'user.json';
+import data from 'data.json';
+import friends from 'friends.json';
+
 export const App = () => {
   return (
     <div
       style={{
         height: '100vh',
         display: 'flex',
+        gap: '20px',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
@@ -13,20 +19,16 @@ export const App = () => {
       }}
     >
       <Profile
-        username={user[0].username}
-        tag={user[0].tag}
-        location={user[0].location}
-        avatar={user[0].avatar}
-        stats={user[0].stats}
+        username={user.username}
+        tag={user.tag}
+        location={user.location}
+        avatar={user.avatar}
+        stats={user.stats}
       />
-      
-      <Profile
-        username={user[1].username}
-        tag={user[1].tag}
-        location={user[1].location}
-        avatar={user[1].avatar}
-        stats={user[1].stats}
-      />
+
+      <Statistics title="Upload stats" stats={data} />
+
+      <FriendList friends= {friends} />
     </div>
   );
 };
